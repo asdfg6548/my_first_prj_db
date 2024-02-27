@@ -57,65 +57,69 @@ from board_user
 
 
 -- NATURE JOIN
-create table private_info1(
-    id int primary key auto_increment,
+create table private_info1
+(
+    id   int primary key auto_increment,
     name varchar(20),
-    age int
+    age  int
 );
 
-create table private_info2(
-    id int primary key auto_increment,
-    name varchar(20),
+create table private_info2
+(
+    id      int primary key auto_increment,
+    name    varchar(20),
     address varchar(50)
 );
 
-insert into private_info1 (name,age) values
-('user1',10),
-('user2',11),
-('user3',12),
-('user4',13),
-('user5',20),
-('user6',25),
-('user7',44),
-('user8',50),
-('user9',71),
-('user10',88);
+insert into private_info1 (name, age)
+values ('user1', 10),
+       ('user2', 11),
+       ('user3', 12),
+       ('user4', 13),
+       ('user5', 20),
+       ('user6', 25),
+       ('user7', 44),
+       ('user8', 50),
+       ('user9', 71),
+       ('user10', 88);
 
-insert into private_info2(name, address) VALUES
-('user1','my home'),
-('user2','office'),
-('user3','hotel'),
-('user4','apt'),
-('user5','street'),
-('user6','sky'),
-('user7','boat'),
-('user8','yard'),
-('user9','building'),
-('user10','forest');
+insert into private_info2(name, address)
+VALUES ('user1', 'my home'),
+       ('user2', 'office'),
+       ('user3', 'hotel'),
+       ('user4', 'apt'),
+       ('user5', 'street'),
+       ('user6', 'sky'),
+       ('user7', 'boat'),
+       ('user8', 'yard'),
+       ('user9', 'building'),
+       ('user10', 'forest');
 
 -- 매우 암묵적으로 연결
-select * from private_info1
-natural join private_info2;
+select *
+from private_info1
+         natural join private_info2;
 
-create table private_info3(
-    id int primary key auto_increment,
-    name varchar(20),
+create table private_info3
+(
+    id                   int primary key auto_increment,
+    name                 varchar(20),
     insurance_registered boolean
 );
 
-insert into private_info3 (name,insurance_registered) values
-('user1',TRUE),
-('user10',FALSE),
-('user2',TRUE),
-('user3',TRUE),
-('user4',TRUE),
-('user5',TRUE),
-('user6',FALSE),
-('user7',FALSE),
-('user8',FALSE),
-('user9',FALSE);
+insert into private_info3 (name, insurance_registered)
+values ('user1', TRUE),
+       ('user10', FALSE),
+       ('user2', TRUE),
+       ('user3', TRUE),
+       ('user4', TRUE),
+       ('user5', TRUE),
+       ('user6', FALSE),
+       ('user7', FALSE),
+       ('user8', FALSE),
+       ('user9', FALSE);
 
 select *
 from private_info1 p1
-INNER join private_info3 p3
-ON p1.name=p3.name;
+         INNER join private_info3 p3
+                    ON p1.name = p3.name;
