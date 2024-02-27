@@ -54,8 +54,11 @@ from board_user
 
 -- MySQL 에서는 FULL OUTER JOIN 지원X
 -- UNION 집합연산을 사용해서 FULL OUTER JOIN 구현 가능
-
-
+select * from board_user
+         left join post p on board_user.id = p.board_user_id
+union
+select * from board_user
+    right join post p on board_user.id = p.board_user_id;
 -- NATURE JOIN
 create table private_info1
 (
@@ -123,3 +126,30 @@ select *
 from private_info1 p1
          INNER join private_info3 p3
                     ON p1.name = p3.name;
+
+create table device
+(
+    device_name varchar(20),
+    disk_size   int
+);
+
+create table color_option
+(
+    color_name varchar(10)
+);
+
+insert into device
+values ('갤럭시 s24', 1024),
+       ('아이폰 15', 1024),
+       ('갤럭시 s24', 512),
+       ('아이폰 15', 512),
+       ('갤럭시 s24', 256),
+       ('아이폰 15', 256);
+
+insert into color_option
+values ('white'),
+       ('balck'),
+       ('blue');
+
+select * from device
+cross join color_option;
